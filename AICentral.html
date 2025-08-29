@@ -6,202 +6,140 @@
   <title>AI Tools Directory - Find the Perfect AI Solution</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .new-release-badge {
-            animation: pulse 2s infinite;
-        }
-        /* Slideshow styles */
-        .slideshow-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-        .slideshow {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide {
-            min-width: 100%;
-            padding: 0 15px;
-            box-sizing: border-box;
-        }
-        .slide-content {
-            position: relative;
-            height: 100%;
-        }
-        .slide-video {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .slide-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .slide-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        .slide-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            margin: 0 5px;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-        .slide-dot.active {
-            background: white;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #f97316, #9a3412);
-        }
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-            border: 1px solid #000;
-        }
-        .category-chip {
-            transition: all 0.3s ease;
-        }
-        .category-chip:hover {
-            transform: scale(1.05);
-        }
-        .active-category {
-            background-color: #ea580c;
-            color: white;
-        }
-        .search-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.5);
-            border-color: #ea580c;
-        }
-        .pricing-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-    </style>
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .new-release-badge { animation: pulse 2s infinite; }
+    /* Slideshow styles */
+    .slideshow-container { position: relative; width: 100%; overflow: hidden; }
+    .slideshow { display: flex; transition: transform 0.6s ease-in-out; }
+    .slide { min-width: 100%; padding: 0 15px; box-sizing: border-box; }
+    .slide-content { position: relative; height: 100%; }
+    .slide-video, .slide-image {
+      width: 100%; height: 300px; object-fit: cover; border-radius: 8px;
+    }
+    .slide-controls { display: flex; justify-content: center; margin-top: 15px; }
+    .slide-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: rgba(255,255,255,0.5); margin: 0 5px; cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .slide-dot.active { background: white; }
+    .gradient-bg { background: linear-gradient(135deg, #f97316, #9a3412); }
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      border: 1px solid #000;
+    }
+    .category-chip { transition: all 0.3s ease; }
+    .category-chip:hover { transform: scale(1.05); }
+    .active-category { background-color: #ea580c; color: white; }
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.5);
+      border-color: #ea580c;
+    }
+    .pricing-badge {
+      position: absolute; top: -10px; right: -10px;
+      padding: 0.25rem 0.5rem; border-radius: 9999px;
+      font-size: 0.75rem; font-weight: bold;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- Header -->
-    <header class="gradient-bg text-white">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-4 md:mb-0">
-                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
-                        <i class="fas fa-robot text-purple-600 text-xl"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold">AICentral</h1>
-                </div>
-                <nav class="flex space-x-1 md:space-x-4">
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium bg-orange-500 text-black border border-black">Home</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-orange-700">Submit Tool</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-orange-700">About</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-orange-700">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Discover the Best AI Tools</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Browse our curated collection of AI platforms categorized by pricing model and features. Find the perfect solution for your needs.</p>
-            
-            <div class="max-w-2xl mx-auto relative">
-                <input type="text" placeholder="Search AI tools..." class="search-input w-full px-6 py-4 rounded-full text-gray-800 focus:ring-2 focus:ring-purple-300">
-                <button class="absolute right-2 top-2 bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
+  <!-- Header -->
+  <header class="gradient-bg text-white">
+    <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center mb-4 md:mb-0">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
+          <i class="fas fa-robot text-purple-600 text-xl"></i>
         </div>
-    </section>
+        <h1 class="text-2xl font-bold">AICentral</h1>
+      </div>
+      <nav class="flex space-x-1 md:space-x-4">
+        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium bg-orange-500 text-black border border-black">Home</a>
+        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-orange-700">Submit Tool</a>
+        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-orange-700">About</a>
+        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-orange-700">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Slideshow for New Releases -->
-    <section class="bg-gradient-to-r from-orange-900 to-black text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-8">
-                <h3 class="text-3xl font-bold">🔥 New AI Releases</h3>
-                <p class="text-purple-100 text-xl">Check out these cutting-edge tools just launched this month!</p>
-            </div>
-            
-            <div class="slideshow-container">
-                <div class="slideshow" id="main-slideshow">
-                    <!-- Slide 1 - Video -->
-                    <div class="slide">
-                        <div class="slide-content bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6">
-                            <video class="slide-video" autoplay muted loop playsinline>
-                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                            </video>
-                            <div class="mt-4">
-                                <div class="flex items-center justify-center mb-2">
-                                    <img src="https://via.placeholder.com/40" alt="Tool Logo" class="w-10 h-10 rounded-full mr-3">
-                                    <h4 class="font-bold text-xl">AI Video Pro</h4>
-                                </div>
-                                <p class="text-purple-100 text-center">Next-gen AI video editor with auto-captioning</p>
-                                <span class="new-release-badge block mx-auto mt-2 text-xs bg-orange-500 text-black px-2 py-1 rounded w-fit border border-black">NEW RELEASE</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 2 - Image -->
-                    <div class="slide">
-                        <div class="slide-content bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6">
-                            <img src="https://via.placeholder.com/800x450" alt="CodePilot X" class="slide-image">
-                            <div class="mt-4">
-                                <div class="flex items-center justify-center mb-2">
-                                    <img src="https://via.placeholder.com/40" alt="Tool Logo" class="w-10 h-10 rounded-full mr-3">
-                                    <h4 class="font-bold text-xl">CodePilot X</h4>
-                                </div>
-                                <p class="text-purple-100 text-center">AI pair programmer with full-stack capabilities</p>
-                                <span class="new-release-badge block mx-auto mt-2 text-xs bg-black text-orange-500 px-2 py-1 rounded w-fit">NEW RELEASE</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 3 - Video -->
-                    <div class="slide">
-                        <div class="slide-content bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6">
-                            <video class="slide-video" autoplay muted loop playsinline>
-                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Discover the Best AI Tools</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Browse our curated collection of AI platforms categorized by pricing model and features.</p>
+      <div class="max-w-2xl mx-auto relative">
+        <input type="text" placeholder="Search AI tools..." class="search-input w-full px-6 py-4 rounded-full text-gray-800 focus:ring-2 focus:ring-purple-300">
+        <button class="absolute right-2 top-2 bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </section>
 
-                            </video>
-                            <div class="mt-4">
-                                <div class="flex items-center justify-center mb-2">
-                                    <img src="https://via.placeholder.com/40" alt="Tool Logo" class="w-10 h-10 rounded-full mr-3">
-                                    <h4 class="font-bold text-xl">VoiceClone 2.0</h4>
-                                </div>
-                                <p class="text-purple-100 text-center">Ultra-realistic voice cloning with emotions</p>
-                                <span class="new-release-badge block mx-auto mt-2 text-xs bg-white text-purple-600 px-2 py-1 rounded w-fit">NEW RELEASE</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="slide-controls">
-                    <div class="slide-dot active" data-slide="0"></div>
-                    <div class="slide-dot" data-slide="1"></div>
-                    <div class="slide-dot" data-slide="2"></div>
-                </div>
+  <!-- Slideshow -->
+  <section class="bg-gradient-to-r from-orange-900 to-black text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold">🔥 New AI Releases</h3>
+        <p class="text-purple-100 text-xl">Check out these cutting-edge tools just launched this month!</p>
+      </div>
+
+      <div class="slideshow-container">
+        <div class="slideshow" id="main-slideshow">
+          <!-- Slide 1 -->
+          <div class="slide">
+            <div class="slide-content bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6">
+              <video class="slide-video" autoplay muted loop playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+              </video>
+              <div class="mt-4 text-center">
+                <h4 class="font-bold text-xl">AI Video Pro</h4>
+                <p class="text-purple-100">Next-gen AI video editor with auto-captioning</p>
+                <span class="new-release-badge mt-2 text-xs bg-orange-500 text-black px-2 py-1 rounded border border-black">NEW RELEASE</span>
+              </div>
             </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide">
+            <div class="slide-content bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6">
+              <img src="https://via.placeholder.com/800x450" class="slide-image" alt="CodePilot X">
+              <div class="mt-4 text-center">
+                <h4 class="font-bold text-xl">CodePilot X</h4>
+                <p class="text-purple-100">AI pair programmer with full-stack capabilities</p>
+                <span class="new-release-badge mt-2 text-xs bg-black text-orange-500 px-2 py-1 rounded">NEW RELEASE</span>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="slide">
+            <div class="slide-content bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6">
+              <video class="slide-video" autoplay muted loop playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+              </video>
+              <div class="mt-4 text-center">
+                <h4 class="font-bold text-xl">VoiceClone 2.0</h4>
+                <p class="text-purple-100">Ultra-realistic voice cloning with emotions</p>
+                <span class="new-release-badge mt-2 text-xs bg-white text-purple-600 px-2 py-1 rounded">NEW RELEASE</span>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+
+        <div class="slide-controls">
+          <div class="slide-dot active" data-slide="0"></div>
+          <div class="slide-dot" data-slide="1"></div>
+          <div class="slide-dot" data-slide="2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
@@ -593,36 +531,32 @@
     </footer>
 
     <script>
-        // Slideshow functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const slideshow = document.getElementById('main-slideshow');
-            const dots = document.querySelectorAll('.slide-dot');
-            let currentSlide = 0;
-            const slideCount = document.querySelectorAll('.slide').length;
-            
-            function goToSlide(index) {
-                currentSlide = index;
-                slideshow.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Update dots
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentSlide);
-                });
-            }
-        });
-            
-            // Dot click handlers
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    goToSlide(parseInt(this.dataset.slide));
-                });
-            });
-            
-            // Auto-advance slides
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % slideCount;
-                goToSlide(currentSlide);
-            }, 5000);
+ const slideshow = document.getElementById('main-slideshow');
+    const dots = document.querySelectorAll('.slide-dot');
+    let currentSlide = 0;
+    const totalSlides = slideshow.children.length;
+
+    function showSlide(index) {
+      slideshow.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+      currentSlide = index;
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        showSlide(parseInt(dot.getAttribute('data-slide')));
+      });
+    });
+
+    // Auto slide
+    setInterval(() => {
+      let nextSlide = (currentSlide + 1) % totalSlides;
+      showSlide(nextSlide);
+    }, 5000);
+
+    // Initial
+    showSlide(0);
             
             // Rest of your existing JavaScript...
         document.addEventListener('DOMContentLoaded', function() {
